@@ -1477,15 +1477,25 @@ class MainActivity : AppCompatActivity(), DJISDKManager.SDKManagerCallback {
 
     // SDK Callback Functions
     override fun onRegister(error: DJIError?) {
-        if(error == DJISDKError.REGISTRATION_SUCCESS)
+        if(error == DJISDKError.REGISTRATION_SUCCESS) {
             regText.text = getString(R.string.registered, sdkManager.sdkVersion)
-        else{
+            Log.i(TAG, "SDK Registration Successful! Version: ${sdkManager.sdkVersion}")
+            
+            // Check for connected products immediately after registration
+            val currentProduct = DJISDKManager.getInstance().product
+            if (currentProduct != null) {
+                Log.i(TAG, "Product already connected: ${currentProduct.model}")
+            } else {
+                Log.i(TAG, "No product connected yet. Waiting for connection...")
+            }
+        } else {
             regText.text = getString(R.string.register_failed)
-            Log.i(TAG, "onRegister Failed: ${error?.description}")
+            Log.e(TAG, "onRegister Failed: ${error?.description}")
         }
     }
 
     override fun onProductConnect(product: BaseProduct?) {
+        Log.i(TAG, "onProductConnect called with product: ${product?.model}")
         drone = product as Aircraft?
 
         drone?.flightController?.rollPitchCoordinateSystem = FlightCoordinateSystem.BODY
@@ -1504,6 +1514,7 @@ class MainActivity : AppCompatActivity(), DJISDKManager.SDKManagerCallback {
     }
 
     override fun onProductDisconnect() {
+        Log.i(TAG, "onProductDisconnect called")
         removeComponentCallbacks()
         drone = null
         updateDroneDetails()

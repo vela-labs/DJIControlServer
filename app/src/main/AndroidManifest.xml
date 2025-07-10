@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" package="com.rrc.djiControlServer">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" package="com.rrc.djiControlServer" android:installLocation="preferExternal">
 
     <!-- Permissions and features -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -28,12 +28,14 @@
         <!-- DJI SDK -->
         <uses-library android:name="com.android.future.usb.accessory" />
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
-        <meta-data android:name="com.dji.sdk.API_KEY" android:value="YOUR-API-KEY-HERE" />
+        <meta-data android:name="com.dji.sdk.API_KEY" android:value="4eab016a840bcd35e0ee6384" />
         <activity android:name=".MainActivity" android:screenOrientation="userLandscape" android:exported="true" tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-                <action android:name="android.hardward.usb.action.USB_ACCESSORY_ATTACHED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_ACCESSORY_ATTACHED" />
             </intent-filter>
             <meta-data android:name="android.hardware.usb.action.USB_ACCESSORY_ATTACHED" android:resource="@xml/accessory_filter" />
         </activity>

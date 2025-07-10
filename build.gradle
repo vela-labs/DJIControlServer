@@ -1,11 +1,15 @@
 buildscript {
-    ext.kotlin_version = '1.7.10'
+    ext.kotlin_version = '1.8.22'
+
     repositories {
         google()
         mavenCentral()
     }
+
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.4'
+        // Android Gradle Plugin ≥8.1.0 for Gradle 8.5+ compatibility
+        classpath 'com.android.tools.build:gradle:8.1.0'
+        // Kotlin Gradle plugin matching ext.kotlin_version
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -16,7 +20,6 @@ allprojects {
         mavenCentral()
     }
 }
-
 
 task clean(type: Delete) {
     delete rootProject.buildDir

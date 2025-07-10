@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <usb-accessory 
+        manufacturer="DJI" 
+        model="T600" 
+        version="1.0" />
+    <usb-accessory 
+        manufacturer="Dji" 
+        model="wm160" 
+        version="1.0" />
+    <usb-accessory 
+        manufacturer="DJI" 
+        model="wm220" 
+        version="1.0" />
+    <usb-accessory 
+        manufacturer="DJI" 
+        model="wm100" 
+        version="1.0" />
+    <usb-accessory 
+        manufacturer="DJI" 
+        model="wm330" 
+        version="1.0" />
+    <usb-accessory 
+        manufacturer="DJI" 
+        model="wm620" 
+        version="1.0" />
+</resources> 
